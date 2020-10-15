@@ -1,0 +1,47 @@
+version: '3.5'
+
+services:
+  kafka1:
+    image: quay.io/yigitpolat/apache-kafka:s390x
+    hostname: kafka1
+    ports:
+      - 19092:19092
+    networks:
+      - zookeeper-apache-cluster-network
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: "zoo1:12181,zoo2:22181,zoo3:32181"
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:19092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka1:19092
+
+  kafka2:
+    image: quay.io/yigitpolat/apache-kafka:s390x
+    hostname: kafka2
+    ports:
+      - 29092:29092
+    networks:
+      - zookeeper-apache-cluster-network
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: "zoo1:12181,zoo2:22181,zoo3:32181"
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka2:29092
+    
+
+  kafka3:
+    image: quay.io/yigitpolat/apache-kafka:s390x
+    hostname: kafka3
+    ports:
+      - 39092:39092
+    networks:
+      - zookeeper-apache-cluster-network
+    environment:
+      KAFKA_BROKER_ID: 3
+      KAFKA_ZOOKEEPER_CONNECT: "zoo1:12181,zoo2:22181,zoo3:32181"
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:39092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka3:39092
+
+networks:
+  zookeeper-apache-cluster-network:
+    external: true
+    name: zookeeper-apache-cluster-network
