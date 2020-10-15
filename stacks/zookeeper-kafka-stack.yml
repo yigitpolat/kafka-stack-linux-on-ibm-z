@@ -46,7 +46,6 @@ services:
       - zookeeper-kafka-network
     volumes:
       - ${PWD}/../apache-kafka/conf/kafka-1-server.properties:/home/kafka/config/server.properties
-
     depends_on:
       - zookeeper-1
       - zookeeper-2

@@ -8,6 +8,9 @@ services:
       - 19092:19092
     networks:
       - zookeeper-apache-cluster-network
+    volumes:
+      - ${PWD}/../apache-kafka/conf/kafka-1-server.properties:/home/kafka/config/server.properties
+  
 
   kafka-2:
     image: quay.io/yigitpolat/apache-kafka:s390x
@@ -16,6 +19,8 @@ services:
       - 29092:29092
     networks:
       - zookeeper-apache-cluster-network
+    volumes:
+      - ${PWD}/../apache-kafka/conf/kafka-2-server.properties:/home/kafka/config/server.properties
 
   kafka-3:
     image: quay.io/yigitpolat/apache-kafka:s390x
@@ -24,6 +29,9 @@ services:
       - 39092:39092
     networks:
       - zookeeper-apache-cluster-network
+    volumes:
+      - ${PWD}/../apache-kafka/conf/kafka-3-server.properties:/home/kafka/config/server.properties
+  
 
 networks:
   zookeeper-apache-cluster-network:
