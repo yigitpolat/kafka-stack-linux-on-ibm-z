@@ -11,11 +11,6 @@ services:
     volumes:
       - kafka1-conf:/home/kafka/config
       - kafka1-logs:/home/kafka/logs
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: "zoo1:12181,zoo2:22181,zoo3:32181"
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:19092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka1:19092
 
   kafka2:
     image: quay.io/yigitpolat/apache-kafka:s390x
@@ -27,12 +22,6 @@ services:
     volumes:
       - kafka2-conf:/home/kafka/config
       - kafka2-logs:/home/kafka/logs
-    environment:
-      KAFKA_BROKER_ID: 2
-      KAFKA_ZOOKEEPER_CONNECT: "zoo1:12181,zoo2:22181,zoo3:32181"
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka2:29092
-    
 
   kafka3:
     image: quay.io/yigitpolat/apache-kafka:s390x
@@ -44,11 +33,6 @@ services:
     volumes:
       - kafka3-conf:/home/kafka/config
       - kafka3-logs:/home/kafka/logs
-    environment:
-      KAFKA_BROKER_ID: 3
-      KAFKA_ZOOKEEPER_CONNECT: "zoo1:12181,zoo2:22181,zoo3:32181"
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:39092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka3:39092
 
 networks:
   zookeeper-apache-cluster-network:
