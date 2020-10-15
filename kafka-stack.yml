@@ -8,6 +8,9 @@ services:
       - 19092:19092
     networks:
       - zookeeper-apache-cluster-network
+    volumes:
+      - kafka1-conf:/home/kafka/config
+      - kafka1-logs:/home/kafka/logs
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: "zoo1:12181,zoo2:22181,zoo3:32181"
@@ -21,6 +24,9 @@ services:
       - 29092:29092
     networks:
       - zookeeper-apache-cluster-network
+    volumes:
+      - kafka2-conf:/home/kafka/config
+      - kafka2-logs:/home/kafka/logs
     environment:
       KAFKA_BROKER_ID: 2
       KAFKA_ZOOKEEPER_CONNECT: "zoo1:12181,zoo2:22181,zoo3:32181"
@@ -35,6 +41,9 @@ services:
       - 39092:39092
     networks:
       - zookeeper-apache-cluster-network
+    volumes:
+      - kafka3-conf:/home/kafka/config
+      - kafka3-logs:/home/kafka/logs
     environment:
       KAFKA_BROKER_ID: 3
       KAFKA_ZOOKEEPER_CONNECT: "zoo1:12181,zoo2:22181,zoo3:32181"
@@ -45,3 +54,23 @@ networks:
   zookeeper-apache-cluster-network:
     external: true
     name: zookeeper-apache-cluster-network
+
+volumes:
+  kafka1-conf:
+    external: true
+    name: kafka1-conf
+  kafka1-logs:
+    external: true
+    name: kafka1-logs
+  kafka2-conf:
+    external: true
+    name: kafka2-conf
+  kafka2-logs:
+    external: true
+    name: kafka2-logs
+  kafka3-conf:
+    external: true
+    name: kafka3-conf
+  kafka3-logs:
+    external: true
+    name: kafka3-logs
