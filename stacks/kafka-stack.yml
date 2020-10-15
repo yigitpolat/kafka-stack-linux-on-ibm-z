@@ -1,0 +1,31 @@
+version: '3.5'
+
+services:
+  kafka-1:
+    image: quay.io/yigitpolat/apache-kafka:s390x
+    hostname: kafka-1
+    ports:
+      - 19092:19092
+    networks:
+      - zookeeper-apache-cluster-network
+
+  kafka-2:
+    image: quay.io/yigitpolat/apache-kafka:s390x
+    hostname: kafka-2
+    ports:
+      - 29092:29092
+    networks:
+      - zookeeper-apache-cluster-network
+
+  kafka-3:
+    image: quay.io/yigitpolat/apache-kafka:s390x
+    hostname: kafka-3
+    ports:
+      - 39092:39092
+    networks:
+      - zookeeper-apache-cluster-network
+
+networks:
+  zookeeper-apache-cluster-network:
+    external: true
+    name: zookeeper-apache-cluster-network

@@ -45,8 +45,8 @@ services:
     networks:
       - zookeeper-kafka-network
     volumes:
-      - kafka-1-conf:/home/kafka/config
-      - kafka-1-logs:/home/kafka/logs
+      - ${PWD}/../apache-kafka/conf/kafka-1-server.properties:/home/kafka/config/server.properties
+
     depends_on:
       - zookeeper-1
       - zookeeper-2
@@ -60,8 +60,7 @@ services:
     networks:
       - zookeeper-kafka-network
     volumes:
-      - kafka2-conf:/home/kafka/config
-      - kafka2-logs:/home/kafka/logs
+      - ${PWD}/../apache-kafka/conf/kafka-2-server.properties:/home/kafka/config/server.properties
     depends_on:
       - zookeeper-1
       - zookeeper-2
@@ -75,8 +74,7 @@ services:
     networks:
       - zookeeper-kafka-network
     volumes:
-      - kafka3-conf:/home/kafka/config
-      - kafka3-logs:/home/kafka/logs
+      - ${PWD}/../apache-kafka/conf/kafka-3-server.properties:/home/kafka/config/server.properties
     depends_on:
       - zookeeper-1
       - zookeeper-2
@@ -86,23 +84,3 @@ networks:
   zookeeper-kafka-network:
     driver: overlay
     name: zookeeper-kafka-network
-
-volumes:
-  kafka-1-conf:
-    external: true
-    name: kafka-1-conf
-  kafka-1-logs:
-    external: true
-    name: kafka-1-logs
-  kafka2-conf:
-    external: true
-    name: kafka2-conf
-  kafka2-logs:
-    external: true
-    name: kafka2-logs
-  kafka3-conf:
-    external: true
-    name: kafka3-conf
-  kafka3-logs:
-    external: true
-    name: kafka3-logs
