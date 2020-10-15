@@ -1,0 +1,108 @@
+version: '3.5'
+
+services:
+  zookeeper-1:
+    image: quay.io/yigitpolat/apache-zookeeper:s390x
+    restart: always
+    hostname: zookeeper-1
+    ports:
+      - 12181:12181
+    networks:
+      - zookeeper-kafka-network
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:12888:13888;12181 server.2=zookeeper-2:22888:23888;22181 server.3=zookeeper-3:32888:33888;32181
+
+  zookeeper-2:
+    image: quay.io/yigitpolat/apache-zookeeper:s390x
+    restart: always
+    hostname: zookeeper-2
+    ports:
+      - 22181:22181
+    networks:
+      - zookeeper-kafka-network
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zookeeper-1:12888:13888;12181 server.2=0.0.0.0:22888:23888;22181 server.3=zookeeper-3:32888:33888;32181
+
+  zookeeper-3:
+    image: quay.io/yigitpolat/apache-zookeeper:s390x
+    restart: always
+    hostname: zookeeper-3
+    ports:
+      - 32181:32181
+    networks:
+      - zookeeper-kafka-network
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zookeeper-1:12888:13888;12181 server.2=zookeeper-2:22888:23888;22181 server.3=0.0.0.0:32888:33888;32181
+
+  kafka-1:
+    image: quay.io/yigitpolat/apache-kafka:s390x
+    hostname: kafka-1
+    ports:
+      - 19092:19092
+    networks:
+      - zookeeper-kafka-network
+    volumes:
+      - kafka-1-conf:/home/kafka/config
+      - kafka-1-logs:/home/kafka/logs
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+
+  kafka-2:
+    image: quay.io/yigitpolat/apache-kafka:s390x
+    hostname: kafka-2
+    ports:
+      - 29092:29092
+    networks:
+      - zookeeper-kafka-network
+    volumes:
+      - kafka2-conf:/home/kafka/config
+      - kafka2-logs:/home/kafka/logs
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+
+  kafka-3:
+    image: quay.io/yigitpolat/apache-kafka:s390x
+    hostname: kafka-3
+    ports:
+      - 39092:39092
+    networks:
+      - zookeeper-kafka-network
+    volumes:
+      - kafka3-conf:/home/kafka/config
+      - kafka3-logs:/home/kafka/logs
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+
+networks:
+  zookeeper-kafka-network:
+    driver: overlay
+    name: zookeeper-kafka-network
+
+volumes:
+  kafka-1-conf:
+    external: true
+    name: kafka-1-conf
+  kafka-1-logs:
+    external: true
+    name: kafka-1-logs
+  kafka2-conf:
+    external: true
+    name: kafka2-conf
+  kafka2-logs:
+    external: true
+    name: kafka2-logs
+  kafka3-conf:
+    external: true
+    name: kafka3-conf
+  kafka3-logs:
+    external: true
+    name: kafka3-logs
