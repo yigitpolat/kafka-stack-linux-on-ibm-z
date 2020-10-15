@@ -12,15 +12,15 @@ docker volume create kafka3-logs
 ```
 
 ```
-curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka1-server.properties -o /var/lib/docker/volumes/kafka1-conf/_data/server.properties
+curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka-1-server.properties -o /var/lib/docker/volumes/kafka-1-conf/_data/server.properties
 ```
 
 ```
-curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka2-server.properties -o /var/lib/docker/volumes/kafka2-conf/_data/server.properties
+curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka-2-server.properties -o /var/lib/docker/volumes/kafka-2-conf/_data/server.properties
 ```
 
 ```
-curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka3-server.properties -o /var/lib/docker/volumes/kafka3-conf/_data/server.properties
+curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka-3-server.properties -o /var/lib/docker/volumes/kafka-3-conf/_data/server.properties
 ```
 
 ```
