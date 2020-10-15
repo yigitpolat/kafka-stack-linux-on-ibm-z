@@ -16,11 +16,11 @@ curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/mai
 ```
 
 ```
-curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka1-server.properties -o /var/lib/docker/volumes/kafka1-conf/_data/server.properties
+curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka2-server.properties -o /var/lib/docker/volumes/kafka1-conf/_data/server.properties
 ```
 
 ```
-curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka1-server.properties -o /var/lib/docker/volumes/kafka1-conf/_data/server.properties
+curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/main/conf/kafka3-server.properties -o /var/lib/docker/volumes/kafka1-conf/_data/server.properties
 ```
 
 ```
