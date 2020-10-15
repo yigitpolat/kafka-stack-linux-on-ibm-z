@@ -9,6 +9,9 @@ services:
       - 12181:12181
     networks:
       - zookeeper-kafka-network
+    # volumes:
+    #   - ${PWD}/../apache-zookeeper/conf/zookeeper-1.cfg:/conf/zoo.cfg
+    #   - ${PWD}/../apache-zookeeper/conf/zookeeper-1-myid:/data/myid
     environment:
       ZOO_MY_ID: 1
       ZOO_SERVERS: server.1=0.0.0.0:12888:13888;12181 server.2=zookeeper-2:22888:23888;22181 server.3=zookeeper-3:32888:33888;32181
@@ -21,6 +24,9 @@ services:
       - 22181:22181
     networks:
       - zookeeper-kafka-network
+    # volumes:
+    #   - ${PWD}/../apache-zookeeper/conf/zookeeper-2.cfg:/conf/zoo.cfg
+    #   - ${PWD}/../apache-zookeeper/conf/zookeeper-2-myid:/data/myid
     environment:
       ZOO_MY_ID: 2
       ZOO_SERVERS: server.1=zookeeper-1:12888:13888;12181 server.2=0.0.0.0:22888:23888;22181 server.3=zookeeper-3:32888:33888;32181
@@ -33,6 +39,9 @@ services:
       - 32181:32181
     networks:
       - zookeeper-kafka-network
+    # volumes:
+    #   - ${PWD}/../apache-zookeeper/conf/zookeeper-3.cfg:/conf/zoo.cfg
+    #   - ${PWD}/../apache-zookeeper/conf/zookeeper-3-myid:/data/myid
     environment:
       ZOO_MY_ID: 3
       ZOO_SERVERS: server.1=zookeeper-1:12888:13888;12181 server.2=zookeeper-2:22888:23888;22181 server.3=0.0.0.0:32888:33888;32181
