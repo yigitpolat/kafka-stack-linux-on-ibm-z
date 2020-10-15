@@ -24,5 +24,5 @@ curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/mai
 ```
 
 ```
-docker stack deploy -c kafka-stack.yml zookeeper
+docker stack deploy -c kafka-stack.yml kafka
 ```
