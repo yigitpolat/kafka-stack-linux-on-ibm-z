@@ -3,12 +3,12 @@ docker stack deploy -c zookeeper-stack.yml zookeeper
 ```
 
 ```
-docker volume create kafka1-conf
-docker volume create kafka1-logs
-docker volume create kafka2-conf
-docker volume create kafka2-logs
-docker volume create kafka3-conf
-docker volume create kafka3-logs
+docker volume create kafka-1-conf
+docker volume create kafka-1-logs
+docker volume create kafka-2-conf
+docker volume create kafka-2-logs
+docker volume create kafka-3-conf
+docker volume create kafka-3-logs
 ```
 
 ```
@@ -25,4 +25,9 @@ curl https://raw.githubusercontent.com/yigitpolat/kafka-stack-linux-on-ibm-z/mai
 
 ```
 docker stack deploy -c kafka-stack.yml kafka
+```
+
+
+```
+docker stack deploy -c zookeeper-kafka-stack.yml zookeeper-kafka
 ```
