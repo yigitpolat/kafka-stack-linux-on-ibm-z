@@ -1,68 +1,116 @@
 # © Copyright IBM Corporation 2017, 2020.
 # LICENSE: Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 
-########## dockerfile for Apache Kafka version 2.5.0 #########
+################ Dockerfile for Apache ZooKeeper version 3.6.1 ######################
 #
-# This Dockerfile builds a basic installation of Apache Kafka.
+# This Dockerfile builds a basic installation of Apache ZooKeeper.
 #
-# Kafka is run as a cluster on one or more servers. The Kafka cluster stores streams of records in categories called topics.
-# Each record consists of a key, a value, and a timestamp.
-# In Kafka the communication between the clients and the servers is done with a simple, high-performance, language agnostic TCP protocol.
+# ZooKeeper is a centralized service for maintaining configuration information,
+# naming, providing distributed synchronization, and providing group services.
+# All of these kinds of services are used in some form or another by distributed applications.
 #
 # To build this image, from the directory containing this Dockerfile
 # (assuming that the file is named Dockerfile):
 # docker build -t <image_name> .
 #
-# To Start Apache Kafka run the below command:
-# docker run --name <container_name>  -d <image>
+# To Start Apache ZooKeeper Server use the following command.
+# docker run --name <container_name> -p <port_number>:2181 -p <port_number>:10524 -d <image_name>
 #
-# To check Apache kafka is running, Enter below command:
-# docker exec <container_id of kafka> <any kafka related command>
-# Eg. To list topic and message files:
-#	 docker exec <container_id of kafka> bin/kafka-topics.sh --list --zookeeper localhost:2181
-#
-# Reference:
-# http://kafka.apache.org/
-# https://kafka.apache.org/quickstart
-#
-##################################################################################
+#####################################################################################
 
 # Base Image
-FROM s390x/ubuntu:20.04
+FROM s390x/ubuntu:18.04
 
 # The author
 LABEL maintainer="LoZ Open Source Ecosystem (https://www.ibm.com/developerworks/community/groups/community/lozopensource)"
 
-ENV SOURCE_DIR=/home/
-ENV JAVA_HOME=/home/jdk-11.0.5+10
-ENV PATH=$PATH:$SOURCE_DIR/:$JAVA_HOME/bin
-ENV VERSION=2.12-2.5.0
+# Set Environment varibles
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-s390x
+ENV PATH=$JAVA_HOME/bin:$PATH
 
-WORKDIR $SOURCE_DIR
+ENV ZOO_CONF_DIR=/conf \
+    ZOO_DATA_DIR=/data \
+    ZOO_DATA_LOG_DIR=/datalog \
+    ZOO_LOG_DIR=/logs \
+    ZOO_TICK_TIME=2000 \
+    ZOO_INIT_LIMIT=5 \
+    ZOO_SYNC_LIMIT=2 \
+    ZOO_AUTOPURGE_PURGEINTERVAL=0 \
+    ZOO_AUTOPURGE_SNAPRETAINCOUNT=3 \
+    ZOO_MAX_CLIENT_CNXNS=60 \
+    ZOO_STANDALONE_ENABLED=true \
+    ZOO_ADMINSERVER_ENABLED=true
 
-# Install dependencies
-RUN	apt-get update && apt-get -y install \
-	git \
-	unzip \
-	wget \
-	vim \
-	net-tools \
-	kafkacat \
-# Download Adopt JDK
-  && wget https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5%2B10/OpenJDK11U-jdk_s390x_linux_hotspot_11.0.5_10.tar.gz \
-  && tar -xvzf OpenJDK11U-jdk_s390x_linux_hotspot_11.0.5_10.tar.gz \
-  && rm OpenJDK11U-jdk_s390x_linux_hotspot_11.0.5_10.tar.gz \
-# Download the Apache Kafka Binary
- && wget http://mirrors.estointernet.in/apache/kafka/2.5.0/kafka_${VERSION}.tgz \
- && tar -xvzf kafka_${VERSION}.tgz \
- && rm kafka_${VERSION}.tgz \
- && mv kafka_${VERSION} kafka
-# Expose ports for Apache ZooKeeper and kafka
-# EXPOSE 2181 9092
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-WORKDIR $SOURCE_DIR/kafka/
+# Add a user with an explicit UID/GID and create necessary directories
+RUN set -eux; \
+    groupadd -r zookeeper --gid=1000; \
+    useradd -r -g zookeeper --uid=1000 zookeeper; \
+    mkdir -p "$ZOO_DATA_LOG_DIR" "$ZOO_DATA_DIR" "$ZOO_CONF_DIR" "$ZOO_LOG_DIR"; \
+    chown zookeeper:zookeeper "$ZOO_DATA_LOG_DIR" "$ZOO_DATA_DIR" "$ZOO_CONF_DIR" "$ZOO_LOG_DIR"
 
-# start zookeeper and kafka server
-CMD bin/kafka-server-start.sh config/server.properties > /dev/null
+# Install required packges
+RUN set -eux; \
+    apt-get update; \
+    DEBIAN_FRONTEND=noninteractive \
+    apt-get install -y --no-install-recommends \
+        vim \
+	    openjdk-11-jre \
+        ca-certificates \
+        dirmngr \
+        gosu \
+        gnupg \
+        netcat \
+        wget; \
+    rm -rf /var/lib/apt/lists/*; \
+# Verify that gosu binary works
+    gosu nobody true
 
-# End of Dockerfile
+ARG GPG_KEY=BBE7232D7991050B54C8EA0ADC08637CA615D22C
+ARG SHORT_DISTRO_NAME=zookeeper-3.6.1
+ARG DISTRO_NAME=apache-zookeeper-3.6.1-bin
+
+# Download Apache Zookeeper, verify its PGP signature, untar and clean up
+RUN set -eux; \
+    ddist() { \
+        local f="$1"; shift; \
+        local distFile="$1"; shift; \
+        local success=; \
+        local distUrl=; \
+        for distUrl in \
+            'https://www.apache.org/dyn/closer.cgi?action=download&filename=' \
+            https://www-us.apache.org/dist/ \
+            https://www.apache.org/dist/ \
+            https://archive.apache.org/dist/ \
+        ; do \
+            if wget -q -O "$f" "$distUrl$distFile" && [ -s "$f" ]; then \
+                success=1; \
+                break; \
+            fi; \
+        done; \
+        [ -n "$success" ]; \
+    }; \
+    ddist "$DISTRO_NAME.tar.gz" "zookeeper/$SHORT_DISTRO_NAME/$DISTRO_NAME.tar.gz"; \
+    ddist "$DISTRO_NAME.tar.gz.asc" "zookeeper/$SHORT_DISTRO_NAME/$DISTRO_NAME.tar.gz.asc"; \
+    export GNUPGHOME="$(mktemp -d)"; \
+    gpg --keyserver ha.pool.sks-keyservers.net --recv-key "$GPG_KEY" || \
+    gpg --keyserver pgp.mit.edu --recv-keys "$GPG_KEY" || \
+    gpg --keyserver keyserver.pgp.com --recv-keys "$GPG_KEY"; \
+    gpg --batch --verify "$DISTRO_NAME.tar.gz.asc" "$DISTRO_NAME.tar.gz"; \
+    tar -zxf "$DISTRO_NAME.tar.gz"; \
+    mv "$DISTRO_NAME/conf/"* "$ZOO_CONF_DIR"; \
+    rm -rf "$GNUPGHOME" "$DISTRO_NAME.tar.gz" "$DISTRO_NAME.tar.gz.asc"; \
+    chown -R zookeeper:zookeeper "/$DISTRO_NAME"; \
+    chmod 755 /docker-entrypoint.sh
+
+WORKDIR $DISTRO_NAME
+VOLUME ["$ZOO_DATA_DIR", "$ZOO_DATA_LOG_DIR", "$ZOO_LOG_DIR"]
+
+# EXPOSE 2181 2888 3888 8080
+
+ENV PATH=$PATH:/$DISTRO_NAME/bin \
+    ZOOCFGDIR=$ZOO_CONF_DIR
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["zkServer.sh", "start-foreground"]
