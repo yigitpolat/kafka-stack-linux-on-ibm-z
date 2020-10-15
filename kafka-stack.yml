@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   kafka1:
-    image: quay.io/yigitpolat/apache-kafka:s390x
+    image: quay.io/yigitpolat/apache-kafka:test
     hostname: kafka1
     ports:
       - 19092:19092
@@ -13,7 +13,7 @@ services:
       - kafka1-logs:/home/kafka/logs
 
   kafka2:
-    image: quay.io/yigitpolat/apache-kafka:s390x
+    image: quay.io/yigitpolat/apache-kafka:test
     hostname: kafka2
     ports:
       - 29092:29092
@@ -24,7 +24,7 @@ services:
       - kafka2-logs:/home/kafka/logs
 
   kafka3:
-    image: quay.io/yigitpolat/apache-kafka:s390x
+    image: quay.io/yigitpolat/apache-kafka:test
     hostname: kafka3
     ports:
       - 39092:39092
