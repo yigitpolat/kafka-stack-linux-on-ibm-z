@@ -96,7 +96,7 @@ docker exec -it zookeeper-2 bash -c "wget -O - http://localhost:8080/commands/st
 docker exec -it zookeeper-3 bash -c "wget -O - http://localhost:8080/commands/stats"
 ```
 
-### Deploy Zookeeper
+### Deploy Kafka
 
 - Change /home/kafka/config1/server.properties file with kafka-1-server.properties
 
