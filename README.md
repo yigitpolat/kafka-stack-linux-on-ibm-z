@@ -81,11 +81,11 @@ exit
 ```
 docker network create ypyp-network
 
-docker run --network ypyp-network --name zookeeper-1 --restart always -p 12181:12181 -p 12888:12888 -p 13888:13888 -v zookeeper-1-conf:/conf:rw -v zookeeper-1-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
+docker run --name zookeeper-1 --restart always -p 12181:12181 -p 12888:12888 -p 13888:13888 -v zookeeper-1-conf:/conf:rw -v zookeeper-1-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
 
-docker run --network ypyp-network --name zookeeper-2 --restart always -p 22181:22181 -p 22888:22888 -p 23888:23888 -v zookeeper-2-conf:/conf:rw -v zookeeper-2-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
+docker run --name zookeeper-2 --restart always -p 22181:22181 -p 22888:22888 -p 23888:23888 -v zookeeper-2-conf:/conf:rw -v zookeeper-2-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
 
-docker run --network ypyp-network --name zookeeper-3 --restart always -p 32181:32181 -p 32888:32888 -p 33888:33888 -v zookeeper-3-conf:/conf:rw -v zookeeper-3-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
+docker run --name zookeeper-3 --restart always -p 32181:32181 -p 32888:32888 -p 33888:33888 -v zookeeper-3-conf:/conf:rw -v zookeeper-3-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
 ```
 
 Check if everything works fine
@@ -96,7 +96,7 @@ docker exec -it zookeeper-2 bash -c "wget -O - http://localhost:8080/commands/st
 docker exec -it zookeeper-3 bash -c "wget -O - http://localhost:8080/commands/stats"
 ```
 
-### Deploy Zookeeper
+### Deploy Kafka
 
 - Change /home/kafka/config1/server.properties file with kafka-1-server.properties
 
