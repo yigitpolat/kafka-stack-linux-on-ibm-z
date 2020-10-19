@@ -1,6 +1,13 @@
 # ZooKeeper - Kafka Cluster on S390X
 
 This content is based on [IBM z/OS Container Extensions (zCX) Use Cases](http://www.redbooks.ibm.com/Redbooks.nsf/RedbookAbstracts/sg248471.html?Open) book under IBM Redbooks publication.
+Reference suggestion;
+- https://zookeeper.apache.org/doc/r3.5.3-beta/zookeeperStarted.html
+- https://docs.cloudera.com/documentation/enterprise/latest/topics/kafka.html
+- https://docs.confluent.io/current/app-development/kafkacat-usage.html
+- https://github.com/simplesteph/kafka-stack-docker-compose
+- https://github.com/confluentinc/cp-docker-images/blob/5.3.3-post/examples/kafka-cluster/docker-compose.yml
+- https://github.com/TribalScale/kafka-waffle-stack/blob/master/docker-compose.yml
 
 ## Step-by-Step
 
@@ -96,7 +103,7 @@ docker exec -it zookeeper-2 bash -c "wget -O - http://localhost:8080/commands/st
 docker exec -it zookeeper-3 bash -c "wget -O - http://localhost:8080/commands/stats"
 ```
 
-### Deploy Zookeeper
+### Deploy Kafka
 
 - Change /home/kafka/config1/server.properties file with kafka-1-server.properties
 
