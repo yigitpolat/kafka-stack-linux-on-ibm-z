@@ -147,7 +147,7 @@ Check if everything works fine
 ```
 docker exec -it kafka-1 bash -c "kafkacat -b kafka-1:19092 -L"
 docker exec -it kafka-2 bash -c "kafkacat -b kafka-2:29092 -L"
-docker exec -it kafka-3 bash -c "kafkacat -b kafka-3:39092 -L"e
+docker exec -it kafka-3 bash -c "kafkacat -b kafka-3:39092 -L"
 
 docker stop kafka-2
 docker exec -it kafka-1 bash -c "kafkacat -b kafka-1:19092 -L"
