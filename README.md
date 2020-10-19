@@ -42,7 +42,7 @@ cp -a /data/* /data1/
 rm /conf1/zoo.cfg
 vi /conf1/zoo.cfg
 rm /data1/myid
-vi /data1/myid
+vi c
 exit
 ```
 
@@ -79,8 +79,6 @@ exit
 ```
 
 ```
-docker network create ypyp-network
-
 docker run --name zookeeper-1 --restart always -p 12181:12181 -p 12888:12888 -p 13888:13888 -v zookeeper-1-conf:/conf:rw -v zookeeper-1-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
 
 docker run --name zookeeper-2 --restart always -p 22181:22181 -p 22888:22888 -p 23888:23888 -v zookeeper-2-conf:/conf:rw -v zookeeper-2-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
@@ -135,11 +133,11 @@ exit
 ```
 
 ```
-docker run --network ypyp-network --name kafka-1 -p 19092:19092 -v kafka-1-conf:/home/kafka/config -v kafka-1-logs:/home/kafka/logs -d quay.io/yigitpolat/apache-kafka:s390x
+docker run --name kafka-1 -p 19092:19092 -v kafka-1-conf:/home/kafka/config -v kafka-1-logs:/home/kafka/logs -d quay.io/yigitpolat/apache-kafka:s390x
 
-docker run --network ypyp-network --name kafka-2 -p 29092:29092 -v kafka-2-conf:/home/kafka/config -v kafka-2-logs:/home/kafka/logs -d quay.io/yigitpolat/apache-kafka:s390x
+docker run --name kafka-2 -p 29092:29092 -v kafka-2-conf:/home/kafka/config -v kafka-2-logs:/home/kafka/logs -d quay.io/yigitpolat/apache-kafka:s390x
 
-docker run --network ypyp-network --name kafka-3 -p 39092:39092 -v kafka-3-conf:/home/kafka/config -v kafka-3-logs:/home/kafka/logs -d quay.io/yigitpolat/apache-kafka:s390x
+docker run --name kafka-3 -p 39092:39092 -v kafka-3-conf:/home/kafka/config -v kafka-3-logs:/home/kafka/logs -d quay.io/yigitpolat/apache-kafka:s390x
 ```
 
 Check if everything works fine with Kafkacat
