@@ -1,13 +1,6 @@
 # ZooKeeper - Kafka Cluster on S390X
 
 This content is based on [IBM z/OS Container Extensions (zCX) Use Cases](http://www.redbooks.ibm.com/Redbooks.nsf/RedbookAbstracts/sg248471.html?Open) book under IBM Redbooks publication.
-Reference suggestion;
-- https://zookeeper.apache.org/doc/r3.5.3-beta/zookeeperStarted.html
-- https://docs.cloudera.com/documentation/enterprise/latest/topics/kafka.html
-- https://docs.confluent.io/current/app-development/kafkacat-usage.html
-- https://github.com/simplesteph/kafka-stack-docker-compose
-- https://github.com/confluentinc/cp-docker-images/blob/5.3.3-post/examples/kafka-cluster/docker-compose.yml
-- https://github.com/TribalScale/kafka-waffle-stack/blob/master/docker-compose.yml
 
 ## Step-by-Step
 
@@ -103,7 +96,7 @@ docker exec -it zookeeper-2 bash -c "wget -O - http://localhost:8080/commands/st
 docker exec -it zookeeper-3 bash -c "wget -O - http://localhost:8080/commands/stats"
 ```
 
-### Deploy Kafka
+### Deploy Zookeeper
 
 - Change /home/kafka/config1/server.properties file with kafka-1-server.properties
 
@@ -149,7 +142,9 @@ docker run --network ypyp-network --name kafka-2 -p 29092:29092 -v kafka-2-conf:
 docker run --network ypyp-network --name kafka-3 -p 39092:39092 -v kafka-3-conf:/home/kafka/config -v kafka-3-logs:/home/kafka/logs -d quay.io/yigitpolat/apache-kafka:s390x
 ```
 
-Check if everything works fine
+Check if everything works fine with Kafkacat
+kafkacat is a command line utility that you can use to test and debug Apache Kafka® deployments. You can use kafkacat to produce, consume, and list topic and partition information for Kafka.
+
 
 ```
 docker exec -it kafka-1 bash -c "kafkacat -b kafka-1:19092 -L"
@@ -163,7 +158,38 @@ docker start kafka-2
 docker exec -it kafka-1 bash -c "kafkacat -b kafka-1:19092 -L"
 ```
 
+Consumer Mode
+```
+kafkacat -b <hostname>:<port> -t <topic-name> -C
+kafkacat -b <hostname>:<port> -t <topic-name> -C -K\t
+```
 
+Producer Mode
+```
+kafkacat -b <hostname>:<port> -t <topic-name> -P
+```
+
+```
+vi /tmp-data/msgs
+These are
+three messages
+sent through kafkacat
+
+kafkacat -b <hostname>:<port> -t <topic-name> -P -T -l /tmp-data/msgs
+# Without the -l flag, the entire file is treated as its own message
+# The -T flag to also echo the input to stdout
+```
+
+```
+kafkacat -b <hostname>:<port> -t <topic-name>  -P -K:
+1:foo
+2:bar
+```
+
+Set partition
+```
+kafkacat -b localhost:9092 -t partitioned_topic -P -p 1
+```
 
 ## Docker Swarm Deployment
 
