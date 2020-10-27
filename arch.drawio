@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-10-26T22:08:43.498Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15" etag="B5ixxeBWNOK37cLrTMxU" version="13.8.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-10-27T06:25:31.868Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15" etag="WXF_K6xzUUqyf-jOZSsc" version="13.8.3" type="github">
   <diagram id="T70CwifL69ZfGFbH6EHj" name="Page-1">
-    <mxGraphModel dx="1922" dy="719" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2145" dy="868" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -191,19 +191,19 @@
         <mxCell id="zY0vd3xaoPElQ49HkwTg-70" value="kafka-1-conf" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="170" y="160" width="130" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="zY0vd3xaoPElQ49HkwTg-71" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: helvetica; font-size: 10px; font-style: normal; font-weight: normal; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; text-decoration: none; display: inline; float: none;&quot;&gt;kafka-1-data&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;labelBackgroundColor=none;" vertex="1" parent="1">
+        <mxCell id="zY0vd3xaoPElQ49HkwTg-71" value="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 10px ; font-style: normal ; font-weight: normal ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; text-decoration: none ; display: inline ; float: none&quot;&gt;kafka-1-logs&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;labelBackgroundColor=none;" vertex="1" parent="1">
           <mxGeometry x="170" y="190" width="130" height="20" as="geometry" />
         </mxCell>
         <mxCell id="zY0vd3xaoPElQ49HkwTg-72" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: helvetica; font-size: 10px; font-style: normal; font-weight: normal; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; text-decoration: none; display: inline; float: none;&quot;&gt;kafka-2-conf&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;labelBackgroundColor=none;" vertex="1" parent="1">
           <mxGeometry x="170" y="220" width="130" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="zY0vd3xaoPElQ49HkwTg-73" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: helvetica; font-size: 10px; font-style: normal; font-weight: normal; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; text-decoration: none; display: inline; float: none;&quot;&gt;kafka-2-data&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;labelBackgroundColor=none;" vertex="1" parent="1">
+        <mxCell id="zY0vd3xaoPElQ49HkwTg-73" value="&lt;span style=&quot;color: rgb(0 , 0 , 0) ; font-family: &amp;#34;helvetica&amp;#34; ; font-size: 10px ; font-style: normal ; font-weight: normal ; letter-spacing: normal ; text-align: center ; text-indent: 0px ; text-transform: none ; word-spacing: 0px ; text-decoration: none ; display: inline ; float: none&quot;&gt;kafka-2-logs&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;labelBackgroundColor=none;" vertex="1" parent="1">
           <mxGeometry x="170" y="250" width="130" height="20" as="geometry" />
         </mxCell>
         <mxCell id="zY0vd3xaoPElQ49HkwTg-74" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-family: helvetica; font-size: 10px; font-style: normal; font-weight: normal; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; text-decoration: none; display: inline; float: none;&quot;&gt;kafka-3-conf&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;labelBackgroundColor=none;" vertex="1" parent="1">
           <mxGeometry x="170" y="280" width="130" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="zY0vd3xaoPElQ49HkwTg-75" value="&lt;span style=&quot;font-family: &amp;#34;helvetica&amp;#34;&quot;&gt;kafka-3-data&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="zY0vd3xaoPElQ49HkwTg-75" value="&lt;span style=&quot;font-family: &amp;#34;helvetica&amp;#34;&quot;&gt;kafka-3-logs&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="1">
           <mxGeometry x="170" y="310" width="130" height="20" as="geometry" />
         </mxCell>
         <mxCell id="zY0vd3xaoPElQ49HkwTg-76" value="Volumes" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="1">
@@ -220,18 +220,6 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="zY0vd3xaoPElQ49HkwTg-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="300" y="200" as="targetPoint" />
-            <mxPoint x="290" y="540" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="290" y="550" />
-              <mxPoint x="380" y="550" />
-              <mxPoint x="380" y="200" />
-              <mxPoint x="300" y="200" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="zY0vd3xaoPElQ49HkwTg-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="zY0vd3xaoPElQ49HkwTg-72">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="170" y="240" as="targetPoint" />
@@ -240,18 +228,6 @@
               <mxPoint x="220" y="530" />
               <mxPoint x="360" y="530" />
               <mxPoint x="360" y="230" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="zY0vd3xaoPElQ49HkwTg-80" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="zY0vd3xaoPElQ49HkwTg-73">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="150" y="260" as="targetPoint" />
-            <mxPoint x="223" y="540" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="210" y="540" />
-              <mxPoint x="210" y="520" />
-              <mxPoint x="350" y="520" />
-              <mxPoint x="350" y="260" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -264,18 +240,6 @@
               <mxPoint x="170" y="500" />
               <mxPoint x="330" y="500" />
               <mxPoint x="330" y="290" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="zY0vd3xaoPElQ49HkwTg-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=10;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="zY0vd3xaoPElQ49HkwTg-20" target="zY0vd3xaoPElQ49HkwTg-75">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="150" y="320" as="targetPoint" />
-            <mxPoint x="170" y="530" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="160" y="540" />
-              <mxPoint x="160" y="490" />
-              <mxPoint x="320" y="490" />
-              <mxPoint x="320" y="320" />
             </Array>
           </mxGeometry>
         </mxCell>
