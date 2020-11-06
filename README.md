@@ -42,7 +42,7 @@ cp -a /data/* /data1/
 rm /conf1/zoo.cfg
 vi /conf1/zoo.cfg
 rm /data1/myid
-vi c
+vi /data1/myid
 exit
 ```
 
@@ -79,6 +79,7 @@ exit
 ```
 
 ```
+
 docker run --name zookeeper-1 --restart always -p 12181:12181 -p 12888:12888 -p 13888:13888 -v zookeeper-1-conf:/conf:rw -v zookeeper-1-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
 
 docker run --name zookeeper-2 --restart always -p 22181:22181 -p 22888:22888 -p 23888:23888 -v zookeeper-2-conf:/conf:rw -v zookeeper-2-data:/data:rw --restart always -d quay.io/yigitpolat/apache-zookeeper:s390x
@@ -108,7 +109,7 @@ vi /home/kafka/config1/server.properties
 exit
 ```
 
-- Change /home/kafka/config2/server.properties file with /configs/kafka/kafka-2-server.properties
+- Change /home/kafka/config2/server.properties file with  /configs/kafka/kafka-2-server.properties
 
 ```
 docker volume create kafka-2-conf
@@ -120,7 +121,7 @@ vi /home/kafka/config2/server.properties
 exit
 ```
 
-- Change /home/kafka/config3/server.properties file with /configs/kafka/kafka-3-server.properties
+- Change /home/kafka/config3/server.properties file with  /configs/kafka/kafka-3-server.properties
 
 ```
 docker volume create kafka-3-conf
