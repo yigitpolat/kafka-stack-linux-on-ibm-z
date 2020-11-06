@@ -30,8 +30,8 @@ or download [Dockerfile](https://github.com/linux-on-ibm-z/dockerfile-examples/t
 
 ### Deploy Zookeeper
 
-- Change /conf1/zoo.cfg file with zookeeper-1.cfg
-- Change /data1/myid file with zookeeper-1-myid
+- Change /conf1/zoo.cfg file with /configs/zookeeper/zookeeper-1.cfg
+- Change /data1/myid file with /configs/zookeeper/zookeeper-1-myid
 
 ```
 docker volume create zookeeper-1-conf
@@ -46,8 +46,8 @@ vi /data1/myid
 exit
 ```
 
-- Change /conf1/zoo.cfg file with zookeeper-2.cfg
-- Change /data1/myid file with zookeeper-2-myid
+- Change /conf1/zoo.cfg file with /configs/zookeeper/zookeeper-2.cfg
+- Change /data1/myid file with /configs/zookeeper/zookeeper-2-myid
 
 ```
 docker volume create zookeeper-2-conf
@@ -62,8 +62,8 @@ vi /data2/myid
 exit
 ```
 
-- Change /conf1/zoo.cfg file with zookeeper-3.cfg
-- Change /data1/myid file with zookeeper-3-myid
+- Change /conf1/zoo.cfg file with /configs/zookeeper/zookeeper-3.cfg
+- Change /data1/myid file with /configs/zookeeper/zookeeper-3-myid
 
 ```
 docker volume create zookeeper-3-conf
@@ -101,8 +101,8 @@ docker exec -it zookeeper-3 bash -c "wget -O - http://localhost:8080/commands/st
 - Change /home/kafka/config1/server.properties file with kafka-1-server.properties
 
 ```
-docker volume create kafka-1-conf
-docker volume create kafka-1-logs
+docker volume create /configs/kafka/kafka-1-conf
+docker volume create /configs/kafka/kafka-1-logs
 docker run -it --name dummy -v kafka-1-conf:/home/kafka/config1 --rm quay.io/yigitpolat/apache-kafka:s390x bash
 cp -a /home/kafka/config/* /home/kafka/config1/
 rm /home/kafka/config1/server.properties
@@ -113,8 +113,8 @@ exit
 - Change /home/kafka/config2/server.properties file with kafka-2-server.properties
 
 ```
-docker volume create kafka-2-conf
-docker volume create kafka-2-logs
+docker volume create /configs/kafka/kafka-2-conf
+docker volume create /configs/kafka/kafka-2-logs
 docker run -it --name dummy -v kafka-2-conf:/home/kafka/config2 --rm quay.io/yigitpolat/apache-kafka:s390x bash
 cp -a /home/kafka/config/* /home/kafka/config2/
 rm /home/kafka/config2/server.properties
@@ -125,8 +125,8 @@ exit
 - Change /home/kafka/config3/server.properties file with kafka-3-server.properties
 
 ```
-docker volume create kafka-3-conf
-docker volume create kafka-3-logs
+docker volume create /configs/kafka/kafka-3-conf
+docker volume create /configs/kafka/kafka-3-logs
 docker run -it --name dummy -v kafka-3-conf:/home/kafka/config3 --rm quay.io/yigitpolat/apache-kafka:s390x bash
 cp -a /home/kafka/config/* /home/kafka/config3/
 rm /home/kafka/config3/server.properties
