@@ -30,8 +30,8 @@ or download [Dockerfile](https://github.com/linux-on-ibm-z/dockerfile-examples/t
 
 ### Deploy Zookeeper
 
-- Change /conf1/zoo.cfg file with zookeeper-1.cfg
-- Change /data1/myid file with zookeeper-1-myid
+- Change /conf1/zoo.cfg file with /configs/zookeeper/zookeeper-1.cfg
+- Change /data1/myid file with /configs/zookeeper/zookeeper-1-myid
 
 ```
 docker volume create zookeeper-1-conf
@@ -46,8 +46,8 @@ vi c
 exit
 ```
 
-- Change /conf1/zoo.cfg file with zookeeper-2.cfg
-- Change /data1/myid file with zookeeper-2-myid
+- Change /conf1/zoo.cfg file with /configs/zookeeper/zookeeper-2.cfg
+- Change /data1/myid file with /configs/zookeeper/zookeeper-2-myid
 
 ```
 docker volume create zookeeper-2-conf
@@ -62,8 +62,8 @@ vi /data2/myid
 exit
 ```
 
-- Change /conf1/zoo.cfg file with zookeeper-3.cfg
-- Change /data1/myid file with zookeeper-3-myid
+- Change /conf1/zoo.cfg file with /configs/zookeeper/zookeeper-3.cfg
+- Change /data1/myid file with /configs/zookeeper/zookeeper-3-myid
 
 ```
 docker volume create zookeeper-3-conf
@@ -96,7 +96,7 @@ docker exec -it zookeeper-3 bash -c "wget -O - http://localhost:8080/commands/st
 
 ### Deploy Kafka
 
-- Change /home/kafka/config1/server.properties file with kafka-1-server.properties
+- Change /home/kafka/config1/server.properties file with /configs/kafka/kafka-1-server.properties
 
 ```
 docker volume create kafka-1-conf
@@ -108,7 +108,7 @@ vi /home/kafka/config1/server.properties
 exit
 ```
 
-- Change /home/kafka/config2/server.properties file with kafka-2-server.properties
+- Change /home/kafka/config2/server.properties file with /configs/kafka/kafka-2-server.properties
 
 ```
 docker volume create kafka-2-conf
@@ -120,7 +120,7 @@ vi /home/kafka/config2/server.properties
 exit
 ```
 
-- Change /home/kafka/config3/server.properties file with kafka-3-server.properties
+- Change /home/kafka/config3/server.properties file with /configs/kafka/kafka-3-server.properties
 
 ```
 docker volume create kafka-3-conf
