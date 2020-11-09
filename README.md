@@ -146,15 +146,15 @@ Check if everything works fine with Kafkacat
 kafkacat is a command line utility that you can use to test and debug Apache Kafka® deployments. You can use kafkacat to produce, consume, and list topic and partition information for Kafka.
 
 ```bash
-docker exec -it kafka-1 bash -c "kafkacat -b kafka-1:19092 -L"
-docker exec -it kafka-2 bash -c "kafkacat -b kafka-2:29092 -L"
-docker exec -it kafka-3 bash -c "kafkacat -b kafka-3:39092 -L"
+docker exec -it kafka-1 bash -c "kafkacat -b 10.3.20.109:19092 -L"
+docker exec -it kafka-2 bash -c "kafkacat -b 10.3.20.109:29092 -L"
+docker exec -it kafka-3 bash -c "kafkacat -b 10.3.20.109:39092 -L"
 
 docker stop kafka-2
-docker exec -it kafka-1 bash -c "kafkacat -b kafka-1:19092 -L"
+docker exec -it kafka-1 bash -c "kafkacat -b 10.3.20.109:19092 -L"
 
 docker start kafka-2
-docker exec -it kafka-1 bash -c "kafkacat -b kafka-1:19092 -L"
+docker exec -it kafka-1 bash -c "kafkacat -b 10.3.20.109:19092 -L"
 ```
 
 Consumer Mode

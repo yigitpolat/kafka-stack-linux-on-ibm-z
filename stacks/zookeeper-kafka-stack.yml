@@ -39,7 +39,7 @@ services:
     networks:
       - zookeeper-kafka-network
     volumes:
-      - ${PWD}/../apache-kafka/conf/kafka-1-server.properties:/home/kafka/config/server.properties
+      - ${PWD}/../configs/zookeeper/kafka-1-server.properties:/home/kafka/config/server.properties
     depends_on:
       - zookeeper-1
       - zookeeper-2
@@ -53,7 +53,7 @@ services:
     networks:
       - zookeeper-kafka-network
     volumes:
-      - ${PWD}/../apache-kafka/conf/kafka-2-server.properties:/home/kafka/config/server.properties
+      - ${PWD}/../configs/zookeeper/kafka-2-server.properties:/home/kafka/config/server.properties
     depends_on:
       - zookeeper-1
       - zookeeper-2
@@ -67,7 +67,7 @@ services:
     networks:
       - zookeeper-kafka-network
     volumes:
-      - ${PWD}/../apache-kafka/conf/kafka-3-server.properties:/home/kafka/config/server.properties
+      - ${PWD}/../configs/zookeeper/kafka-3-server.properties:/home/kafka/config/server.properties
     depends_on:
       - zookeeper-1
       - zookeeper-2

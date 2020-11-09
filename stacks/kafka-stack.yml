@@ -9,7 +9,7 @@ services:
     networks:
       - zookeeper-apache-cluster-network
     volumes:
-      - ${PWD}/../apache-kafka/conf/kafka-1-server.properties:/home/kafka/config/server.properties
+      - ${PWD}/../configs/kafka/kafka-1-server.properties:/home/kafka/config/server.properties
   
 
   kafka-2:
@@ -20,7 +20,7 @@ services:
     networks:
       - zookeeper-apache-cluster-network
     volumes:
-      - ${PWD}/../apache-kafka/conf/kafka-2-server.properties:/home/kafka/config/server.properties
+      - ${PWD}/../configs/kafka/kafka-2-server.properties:/home/kafka/config/server.properties
 
   kafka-3:
     image: quay.io/yigitpolat/apache-kafka:s390x
@@ -30,10 +30,10 @@ services:
     networks:
       - zookeeper-apache-cluster-network
     volumes:
-      - ${PWD}/../apache-kafka/conf/kafka-3-server.properties:/home/kafka/config/server.properties
+      - ${PWD}/../configs/kafka/kafka-3-server.properties:/home/kafka/config/server.properties
   
 
-networks:
-  zookeeper-apache-cluster-network:
-    external: true
-    name: zookeeper-apache-cluster-network
+    # networks:
+    #   zookeeper-apache-cluster-network:
+    #     external: true
+    #     name: zookeeper-apache-cluster-network
