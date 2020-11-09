@@ -33,7 +33,7 @@ services:
       - ${PWD}/../configs/kafka/kafka-3-server.properties:/home/kafka/config/server.properties
   
 
-    # networks:
-    #   zookeeper-apache-cluster-network:
-    #     external: true
-    #     name: zookeeper-apache-cluster-network
+networks:
+  zookeeper-apache-cluster-network:
+    external: true
+    name: zookeeper-apache-cluster-network
